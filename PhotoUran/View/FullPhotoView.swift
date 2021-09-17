@@ -9,39 +9,13 @@ import UIKit
 
 class FullPhotoView: UIViewController {
 	
-	let photoCell: UIImageView = {
-		let imageView = UIImageView()
-		imageView.translatesAutoresizingMaskIntoConstraints = false
-		imageView.contentMode = .scaleAspectFill
-		
-		return imageView
-	}()
+	@IBOutlet weak var photoCell: UIImageView?
 	
-	var imageCell: FotoResult! {
+	var imageCell: FotoResult? {
 		didSet {
-
-			if let imageUrl = URL(string: (imageCell.urls["small"])!) {
-				let data = try? Data(contentsOf: imageUrl)
-				let image = UIImage(data: data!)
-
-				photoCell.image = image
-			}
+			guard let imageUrl = imageCell?.urls["small"], let url = URL(string: imageUrl), let data = try? Data(contentsOf: url) else { return }
+			let image = UIImage(data: data)
+			photoCell?.image = image
 		}
 	}
-
-	
-	override func viewDidLoad() {
-		super.viewDidLoad()
-		setupFullImage()
-	}
-	
-	private func setupFullImage() {
-		view.addSubview(photoCell)
-		photoCell.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-		photoCell.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-		photoCell.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-		photoCell.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-		
-	}
-	
 }
