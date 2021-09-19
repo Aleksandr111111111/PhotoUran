@@ -91,13 +91,14 @@
                             <constraint firstItem="och-E8-2MF" firstAttribute="leading" secondItem="ESP-Js-hfJ" secondAttribute="leading" id="yRZ-a8-wPY"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="cfo-sN-B5v"/>
                     <connections>
                         <outlet property="photoCell" destination="och-E8-2MF" id="hjh-ic-pcY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gF7-j7-H32" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1871" y="16"/>
+            <point key="canvasLocation" x="1826" y="-248"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="m5b-aN-m1r">

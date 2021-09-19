@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -16,12 +16,14 @@
 		C726A51426E9FFA30062D42A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C726A51326E9FFA30062D42A /* Assets.xcassets */; };
 		C726A51726E9FFA30062D42A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C726A51526E9FFA30062D42A /* LaunchScreen.storyboard */; };
 		C726A52526EA04410062D42A /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C726A52426EA04410062D42A /* NetworkService.swift */; };
-		C726A52726EA04580062D42A /* ParserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C726A52626EA04580062D42A /* ParserData.swift */; };
 		C726A52926EA04950062D42A /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = C726A52826EA04950062D42A /* Model.swift */; };
 		C726A52B26EA06410062D42A /* PhotoViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C726A52A26EA06410062D42A /* PhotoViewCell.swift */; };
+		FF06F7AD4BF616FBBF2C3B78 /* Pods_PhotoUran.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BAF31DE9BDFFA59088DF88B /* Pods_PhotoUran.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9BAF31DE9BDFFA59088DF88B /* Pods_PhotoUran.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PhotoUran.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A0537F9E931D868AB359BD94 /* Pods-PhotoUran.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoUran.debug.xcconfig"; path = "Target Support Files/Pods-PhotoUran/Pods-PhotoUran.debug.xcconfig"; sourceTree = "<group>"; };
 		C703FED426EF95D8003F5F98 /* FullPhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullPhotoView.swift; sourceTree = "<group>"; };
 		C703FEDD26F46BC8003F5F98 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		C726A50726E9FF990062D42A /* PhotoUran.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoUran.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -33,9 +35,9 @@
 		C726A51626E9FFA30062D42A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C726A51826E9FFA30062D42A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C726A52426EA04410062D42A /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
-		C726A52626EA04580062D42A /* ParserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParserData.swift; sourceTree = "<group>"; };
 		C726A52826EA04950062D42A /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		C726A52A26EA06410062D42A /* PhotoViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewCell.swift; sourceTree = "<group>"; };
+		D2D08244A28F053101FADA73 /* Pods-PhotoUran.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoUran.release.xcconfig"; path = "Target Support Files/Pods-PhotoUran/Pods-PhotoUran.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,12 +45,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF06F7AD4BF616FBBF2C3B78 /* Pods_PhotoUran.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1F61EB5AF6B7A96D2C4227D3 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A0537F9E931D868AB359BD94 /* Pods-PhotoUran.debug.xcconfig */,
+				D2D08244A28F053101FADA73 /* Pods-PhotoUran.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		4ECD80574EC4EF79A2F084F7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9BAF31DE9BDFFA59088DF88B /* Pods_PhotoUran.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		C703FEDC26F46B7B003F5F98 /* Constants */ = {
 			isa = PBXGroup;
 			children = (
@@ -62,6 +82,8 @@
 			children = (
 				C726A50926E9FF990062D42A /* PhotoUran */,
 				C726A50826E9FF990062D42A /* Products */,
+				1F61EB5AF6B7A96D2C4227D3 /* Pods */,
+				4ECD80574EC4EF79A2F084F7 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -120,7 +142,6 @@
 			isa = PBXGroup;
 			children = (
 				C726A52426EA04410062D42A /* NetworkService.swift */,
-				C726A52626EA04580062D42A /* ParserData.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -132,9 +153,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C726A51B26E9FFA30062D42A /* Build configuration list for PBXNativeTarget "PhotoUran" */;
 			buildPhases = (
+				E4A8649524C941F24ACE81F5 /* [CP] Check Pods Manifest.lock */,
 				C726A50326E9FF990062D42A /* Sources */,
 				C726A50426E9FF990062D42A /* Frameworks */,
 				C726A50526E9FF990062D42A /* Resources */,
+				07753BC45E669CB6C6574246 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -190,6 +213,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		07753BC45E669CB6C6574246 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PhotoUran/Pods-PhotoUran-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PhotoUran/Pods-PhotoUran-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PhotoUran/Pods-PhotoUran-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E4A8649524C941F24ACE81F5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PhotoUran-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		C726A50326E9FF990062D42A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -199,7 +264,6 @@
 				C726A52526EA04410062D42A /* NetworkService.swift in Sources */,
 				C726A50F26E9FF990062D42A /* ViewController.swift in Sources */,
 				C726A52B26EA06410062D42A /* PhotoViewCell.swift in Sources */,
-				C726A52726EA04580062D42A /* ParserData.swift in Sources */,
 				C703FEDE26F46BC8003F5F98 /* Constants.swift in Sources */,
 				C726A50B26E9FF990062D42A /* AppDelegate.swift in Sources */,
 				C703FED526EF95D8003F5F98 /* FullPhotoView.swift in Sources */,
@@ -347,6 +411,7 @@
 		};
 		C726A51C26E9FFA30062D42A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A0537F9E931D868AB359BD94 /* Pods-PhotoUran.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -366,6 +431,7 @@
 		};
 		C726A51D26E9FFA30062D42A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D2D08244A28F053101FADA73 /* Pods-PhotoUran.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

@@ -12,9 +12,7 @@ struct Fotos: Decodable {
 	let results: [FotoResult]
 }
 
-
-struct FotoResult: Decodable {
-	
+struct FotoResult: Decodable {	
 	let urls: [URLFotoResult.RawValue : String]
 	let width: Int
 	let height: Int

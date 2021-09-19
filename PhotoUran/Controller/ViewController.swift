@@ -9,7 +9,7 @@ import UIKit
 class ViewController: UIViewController {
 
 	@IBOutlet weak var photoCollectionView: UICollectionView!
-	private var array = [FotoResult]()
+	var array = [FotoResult]()
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -25,9 +25,9 @@ class ViewController: UIViewController {
 extension ViewController: UISearchBarDelegate {
 	func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
 		if searchBar.searchTextField.text?.count ?? Constants().countSimbols > Constants().countSimbols {
-			ParserData().getImages(searchTerms: searchText) { [weak self](photos) in
-				guard let photosResults = photos else { return }
-				self?.array = photosResults.results
+
+			NetworkService().getSearchBarRequest(searchTerms: searchText){ [weak self](photo) in
+				self?.array = photo
 				self?.photoCollectionView.reloadData()
 			}
 		}
@@ -83,12 +83,12 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
 //MARK: Private
 private extension ViewController {
 	private func allPhoto() {
-		ParserData().getAllImages(searchTerms: "") { [weak self] (photos) in
-			guard let photosResult = photos else { return }
-			self?.array = photosResult.results
-			self?.photoCollectionView.reloadData()
+		NetworkService().getFirstRequest { photos in
+			self.array = photos
+			self.photoCollectionView.reloadData()
 		}
 	}
+	
 	private func setupSearchBar() {
 		let searchController = UISearchController(searchResultsController: nil)
 		navigationItem.searchController = searchController
