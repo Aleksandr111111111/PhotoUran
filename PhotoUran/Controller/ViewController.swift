@@ -83,9 +83,9 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
 //MARK: Private
 private extension ViewController {
 	private func allPhoto() {
-		NetworkService().getFirstRequest { photos in
-			self.array = photos
-			self.photoCollectionView.reloadData()
+		NetworkService().getFirstRequest { [weak self] photos in
+			self?.array = photos
+			self?.photoCollectionView.reloadData()
 		}
 	}
 	
