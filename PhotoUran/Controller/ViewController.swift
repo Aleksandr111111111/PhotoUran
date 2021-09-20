@@ -7,6 +7,15 @@
 import UIKit
 
 class ViewController: UIViewController {
+	struct Constants {
+		let insetsImage = UIEdgeInsets(top: 15, left: 25, bottom: 15, right: 75)
+		let countImageHeight:CGFloat = 3.0
+		let countSimbols = 2
+		let sizePhotoForView:CGFloat = 0.85
+		let countSpasing:CGFloat = 1.0
+		let cellId = "CellPhoto"
+		let idDidSelect = "FullPhotoView"
+	}
 
 	@IBOutlet weak var photoCollectionView: UICollectionView!
 	var array = [FotoResult]()
@@ -25,7 +34,6 @@ class ViewController: UIViewController {
 extension ViewController: UISearchBarDelegate {
 	func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
 		if searchBar.searchTextField.text?.count ?? Constants().countSimbols > Constants().countSimbols {
-
 			NetworkService().getSearchBarRequest(searchTerms: searchText){ [weak self](photo) in
 				self?.array = photo
 				self?.photoCollectionView.reloadData()
@@ -41,7 +49,7 @@ extension ViewController: UICollectionViewDataSource {
 	}
 	
 	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-		let cell =  collectionView.dequeueReusableCell(withReuseIdentifier: "CellPhoto", for: indexPath) as! PhotoViewCell
+		let cell =  collectionView.dequeueReusableCell(withReuseIdentifier: Constants().cellId, for: indexPath) as! PhotoViewCell
 		let images = array[indexPath.item]
 		cell.imageCell = images
 		return cell
@@ -51,7 +59,7 @@ extension ViewController: UICollectionViewDataSource {
 //MARK: UICollectionViewDelegate
 extension ViewController: UICollectionViewDelegate {
 	func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath){
-		let fullPhotoView = storyboard?.instantiateViewController(withIdentifier: "FullPhotoView") as! FullPhotoView
+		let fullPhotoView = storyboard?.instantiateViewController(withIdentifier: Constants().idDidSelect) as! FullPhotoView
 		navigationController?.pushViewController(fullPhotoView, animated: true)
 		collectionView.deselectItem(at: indexPath, animated: true)
 		let image = array[indexPath.item]
@@ -70,7 +78,7 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
 		let widthtCell = CGFloat(photo.width) * heightCell / CGFloat(photo.height)
 		return CGSize.init(width: widthtCell, height: heightCell)
 	}
-	
+
 	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
 		return Constants().insetsImage
 	}
