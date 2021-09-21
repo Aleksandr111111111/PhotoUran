@@ -14,19 +14,20 @@ class NetworkService {
 	}
 	
 	func getFirstRequest(completion: ([FotoResult]) -> Void) {
-		AF.request(Constants().url, headers: ["Authorization": "Client-ID 4c9fbfbbd92c17a2e95081cec370b4511659666240eb4db9416c40c641ee843b"])
+		AF.request(Constants().url, parameters: ["page": String(1), "per_page": String(30)],  headers: ["Authorization": "Client-ID 4c9fbfbbd92c17a2e95081cec370b4511659666240eb4db9416c40c641ee843b"])
 			.validate(statusCode: 200..<300)
 			.validate(contentType: ["application/json"])
 			.response{ response in
-				debugPrint(response)
+				//debugPrint(response)
 				switch response.result {
 				case .success:
-					print("succes!")
+					print(response)
 				case .failure(let error):
 					print(error)
 				}
 			}
 			.responseDecodable(of: [FotoResult].self) { result in
+				print("FirstRequest\(result)")
 			}
 	}
 	
@@ -37,12 +38,13 @@ class NetworkService {
 			.response{ response in
 				switch response.result {
 				case .success:
-					print("succes!")
+					print("succes!\(response.result)")
 				case .failure(let error):
 					print(error)
 				}
 			}
 			.responseDecodable(of: [FotoResult].self) { result in
+				print("Search\(result)")
 			}
 	}
 }

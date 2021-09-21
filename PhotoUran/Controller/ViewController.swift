@@ -28,13 +28,25 @@ class ViewController: UIViewController {
 		allPhoto()
 		setupSearchBar()
 	}
+	func setupSearchBar() {
+		let searchController = UISearchController(searchResultsController: nil)
+		navigationItem.searchController = searchController
+		searchController.searchBar.delegate = self
+	}
+	
+	func allPhoto() {
+	   NetworkService().getFirstRequest { [weak self] photos in
+		   self?.array = photos
+		   self?.photoCollectionView.reloadData()
+	   }
+   }
 }
 
 //MARK:  UISearchBarDelegate
 extension ViewController: UISearchBarDelegate {
 	func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-		if searchBar.searchTextField.text?.count ?? Constants().countSimbols > Constants().countSimbols {
-			NetworkService().getSearchBarRequest(searchTerms: searchText){ [weak self](photo) in
+		if searchBar.searchTextField.text!.count > Constants().countSimbols {
+			NetworkService().getSearchBarRequest(searchTerms: searchText){ [weak self] photo  in
 				self?.array = photo
 				self?.photoCollectionView.reloadData()
 			}
@@ -85,21 +97,5 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
 	
 	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
 		return Constants().insetsImage.bottom
-	}
-}
-
-//MARK: Private
-private extension ViewController {
-	private func allPhoto() {
-		NetworkService().getFirstRequest { [weak self] photos in
-			self?.array = photos
-			self?.photoCollectionView.reloadData()
-		}
-	}
-	
-	private func setupSearchBar() {
-		let searchController = UISearchController(searchResultsController: nil)
-		navigationItem.searchController = searchController
-		searchController.searchBar.delegate = self
 	}
 }
