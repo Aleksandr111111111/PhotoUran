@@ -7,22 +7,16 @@
 
 import Foundation
 
-struct Fotos: Decodable {
-	let total: Int
-	let results: [FotoResult]
-}
-
-struct FotoResult: Decodable {	
-	let urls: [URLFotoResult.RawValue : String]
+struct FotoModel: Decodable {
+	let urls: URLModel
 	let width: Int
 	let height: Int
-	
-	enum URLFotoResult: String {
-		case raw
-		case full
-		case regular
-		case small
-		case thumb
-	}
+}
+
+struct URLModel: Decodable{
+	let full: String
+	let regular: String
+	let small: String
+	let thumb: String
 }
 
