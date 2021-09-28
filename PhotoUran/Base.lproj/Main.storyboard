@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -64,7 +65,7 @@
                     <navigationItem key="navigationItem" title="Photo Collection" largeTitleDisplayMode="never" id="tJ4-hA-ZZK"/>
                     <connections>
                         <outlet property="photoCollectionView" destination="DWr-1M-8WE" id="hH4-pU-CVI"/>
-                        <segue destination="72D-CO-1SR" kind="show" identifier="FullPhoto" id="jxP-ns-8Ba"/>
+                        <segue destination="72D-CO-1SR" kind="show" identifier="FullPhotoView" id="jxP-ns-8Ba"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -94,7 +95,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="cfo-sN-B5v"/>
                     <connections>
-                        <outlet property="photoCell" destination="och-E8-2MF" id="hjh-ic-pcY"/>
+                        <outlet property="fullPhoto" destination="och-E8-2MF" id="hjh-ic-pcY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gF7-j7-H32" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -168,11 +169,13 @@
             </objects>
             <point key="canvasLocation" x="1003" y="75"/>
         </scene>
-        <!--Item-->
+        <!--SEARH-->
         <scene sceneID="xZe-fH-sx2">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bSh-pe-tv0" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="28Z-bx-Nrp"/>
+                    <tabBarItem key="tabBarItem" title="SEARH" id="28Z-bx-Nrp">
+                        <imageReference key="image" image="magnifyingglass.circle" catalog="system" symbolScale="large"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="AWC-cB-ylS">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -187,11 +190,12 @@
             </objects>
             <point key="canvasLocation" x="2010.144927536232" y="246.42857142857142"/>
         </scene>
-        <!--Item-->
+        <!--PHOTO-->
         <scene sceneID="xHg-sQ-kIL">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="5nj-Qc-9qW" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="cTs-tx-kfQ">
+                    <tabBarItem key="tabBarItem" title="PHOTO" id="cTs-tx-kfQ">
+                        <imageReference key="image" image="photo.on.rectangle.angled" catalog="system" symbolScale="large"/>
                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBarItem>
                     <toolbarItems/>
@@ -216,6 +220,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="magnifyingglass.circle" catalog="system" width="128" height="121"/>
+        <image name="photo.on.rectangle.angled" catalog="system" width="128" height="101"/>
         <systemColor name="secondarySystemGroupedBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

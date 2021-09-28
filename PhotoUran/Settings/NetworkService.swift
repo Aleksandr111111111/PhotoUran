@@ -30,6 +30,7 @@ class NetworkService {
 			.responseDecodable(of: [FotoModel].self) { response in
 				guard let propertyResponse = response.value else {return}
 				completion(propertyResponse)
+				
 		}
 	}
 }

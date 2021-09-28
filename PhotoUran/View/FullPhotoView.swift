@@ -10,10 +10,10 @@ import SDWebImage
 
 class FullPhotoView: UIViewController {
 	
-	@IBOutlet weak var photoCell: UIImageView?
+	@IBOutlet weak var fullPhoto: UIImageView?
 	
-	func setupImage(model: FotoModel?){
+	func setupFullImage(model: FotoModel?){
 		guard let imageUrl = model?.urls.small, let url = URL(string: imageUrl) else { return }
-		photoCell?.sd_setImage(with: url, completed: nil)
+		fullPhoto?.sd_setImage(with: url, completed: nil)
 	}
 }

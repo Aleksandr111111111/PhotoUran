@@ -15,7 +15,7 @@ class CollectionViewController: UIViewController {
 		let countSpasing:CGFloat = 1.0
 		let cellId = "CellPhoto"
 		let idDidSelect = "FullPhotoView"
-		let allPhoto = ""
+		let allPhoto = "photos"
 		let sizeIndentation = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
 	}
 	
@@ -68,7 +68,7 @@ extension CollectionViewController: UICollectionViewDelegate {
 		collectionView.deselectItem(at: indexPath, animated: true)
 
 		DispatchQueue.main.async {
-			fullPhotoView.setupImage(model: self.arrayFotoModel[indexPath.item])
+			fullPhotoView.setupFullImage(model: self.arrayFotoModel[indexPath.item])
 			fullPhotoView.reloadInputViews()
 		}
 	}
