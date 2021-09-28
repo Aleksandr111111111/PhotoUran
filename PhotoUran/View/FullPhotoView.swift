@@ -6,16 +6,14 @@
 //
 
 import UIKit
+import SDWebImage
 
 class FullPhotoView: UIViewController {
 	
-	@IBOutlet weak var photoCell: UIImageView?
+	@IBOutlet weak var fullPhoto: UIImageView?
 	
-	var imageCell: FotoResult? {
-		didSet {
-			guard let imageUrl = imageCell?.urls["small"], let url = URL(string: imageUrl), let data = try? Data(contentsOf: url) else { return }
-			let image = UIImage(data: data)
-			photoCell?.image = image
-		}
+	func setupFullImage(model: FotoModel?){
+		guard let imageUrl = model?.urls.small, let url = URL(string: imageUrl) else { return }
+		fullPhoto?.sd_setImage(with: url, completed: nil)
 	}
 }

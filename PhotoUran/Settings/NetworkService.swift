@@ -7,42 +7,30 @@
 import Alamofire
 import Foundation
 class NetworkService {
+	
 	struct Constants {
 		let url = "https://api.unsplash.com/photos/"
-		let apiKey = "4c9fbfbbd92c17a2e95081cec370b4511659666240eb4db9416c40c641ee843b"
-		let header = ["Authorization": "Client-ID 4c9fbfbbd92c17a2e95081cec370b4511659666240eb4db9416c40c641ee843b"]
+		let header: HTTPHeaders = ["Authorization": "Client-ID 4c9fbfbbd92c17a2e95081cec370b4511659666240eb4db9416c40c641ee843b"]
+		let contentType = ["application/json"]
+		let statusCode = 200..<300
+		
+		func prepareParameters(searchTerms: String?) -> [String: String] {
+			var parameters = [String: String]()
+			parameters["query"] = searchTerms
+			parameters["page"] = String(1)
+			parameters["per_page"] = String(30)
+			return parameters
+		}
 	}
 	
-	func getFirstRequest(completion: ([FotoResult]) -> Void) {
-		AF.request(Constants().url, headers: ["Authorization": "Client-ID 4c9fbfbbd92c17a2e95081cec370b4511659666240eb4db9416c40c641ee843b"])
-			.validate(statusCode: 200..<300)
-			.validate(contentType: ["application/json"])
-			.response{ response in
-				debugPrint(response)
-				switch response.result {
-				case .success:
-					print("succes!")
-				case .failure(let error):
-					print(error)
-				}
-			}
-			.responseDecodable(of: [FotoResult].self) { result in
-			}
-	}
-	
-	func getSearchBarRequest(searchTerms: String, completion: ([FotoResult]) -> Void) {
-		AF.request(Constants().url, parameters: ["query" : searchTerms, "page": String(1), "per_page": String(30)], headers: ["Authorization": "Client-ID 4c9fbfbbd92c17a2e95081cec370b4511659666240eb4db9416c40c641ee843b"])
-			.validate(statusCode: 200..<300)
-			.validate(contentType: ["application/json"])
-			.response{ response in
-				switch response.result {
-				case .success:
-					print("succes!")
-				case .failure(let error):
-					print(error)
-				}
-			}
-			.responseDecodable(of: [FotoResult].self) { result in
-			}
+	func getRequest(searchTerms: String, completion: @escaping([FotoModel]) -> Void) {
+		AF.request(Constants().url, parameters: Constants().prepareParameters(searchTerms: searchTerms), headers: Constants().header)
+			.validate(statusCode: Constants().statusCode)
+			.validate(contentType: Constants().contentType)
+			.responseDecodable(of: [FotoModel].self) { response in
+				guard let propertyResponse = response.value else {return}
+				completion(propertyResponse)
+				
+		}
 	}
 }
