@@ -12,7 +12,7 @@ class PhotoCollectionCell: UICollectionViewCell {
 	
 	@IBOutlet weak var photoCell: UIImageView?
 	
-	var imageCell: FotoModel? {
+	var imageCell: URLModel? {
 		didSet {
 			guard let imageUrl = imageCell?.urls.small, let url = URL(string: imageUrl) else { return }
 			photoCell?.sd_setImage(with: url, completed: nil)

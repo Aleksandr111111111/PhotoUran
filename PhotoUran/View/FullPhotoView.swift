@@ -12,8 +12,9 @@ class FullPhotoView: UIViewController {
 	
 	@IBOutlet weak var fullPhoto: UIImageView?
 	
-	func setupFullImage(model: FotoModel?){
+	func setupFullImage(model: URLModel?){
 		guard let imageUrl = model?.urls.small, let url = URL(string: imageUrl) else { return }
 		fullPhoto?.sd_setImage(with: url, completed: nil)
+		
 	}
 }

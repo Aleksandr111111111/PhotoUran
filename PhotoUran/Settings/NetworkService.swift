@@ -9,11 +9,11 @@ import Foundation
 class NetworkService {
 	
 	struct Constants {
-		let url = "https://api.unsplash.com/photos/"
+		let url = "https://api.unsplash.com/search/photos/"
 		let header: HTTPHeaders = ["Authorization": "Client-ID 4c9fbfbbd92c17a2e95081cec370b4511659666240eb4db9416c40c641ee843b"]
 		let contentType = ["application/json"]
 		let statusCode = 200..<300
-		
+	
 		func prepareParameters(searchTerms: String?) -> [String: String] {
 			var parameters = [String: String]()
 			parameters["query"] = searchTerms
@@ -23,14 +23,17 @@ class NetworkService {
 		}
 	}
 	
-	func getRequest(searchTerms: String, completion: @escaping([FotoModel]) -> Void) {
+	func getRequest(searchTerms: String, completion: @escaping(FotoModel) -> Void) {
+		//DispatchQueue.main.async {
 		AF.request(Constants().url, parameters: Constants().prepareParameters(searchTerms: searchTerms), headers: Constants().header)
 			.validate(statusCode: Constants().statusCode)
 			.validate(contentType: Constants().contentType)
-			.responseDecodable(of: [FotoModel].self) { response in
+			.responseDecodable(of: FotoModel.self) { response in
+				//DispatchQueue.main.async{
+					//print(response)
 				guard let propertyResponse = response.value else {return}
 				completion(propertyResponse)
-				
+				//}
 		}
 	}
 }

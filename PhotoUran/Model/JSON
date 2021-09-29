@@ -84,16 +84,16 @@ struct FotoModel: Decodable {
 
  struct URLModel: Decodable {
 
- 	let urls: [URLFotoResult.RawValue : String]
+ 	let urls: URLFotoResult
  	let width: Int
  	let height: Int
 
- 	enum URLFotoResult: String {
- 		case raw
- 		case full
- 		case regular
- 		case small
- 		case thumb
+ 	 struct URLFotoResult: Decodable {
+		let raw: String
+		let full: String
+		let regular: String
+		let small: String
+		let thumb: String
  	}
  }
 

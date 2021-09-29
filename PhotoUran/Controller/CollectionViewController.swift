@@ -20,7 +20,7 @@ class CollectionViewController: UIViewController {
 	}
 	
 	@IBOutlet weak var photoCollectionView: UICollectionView!
-	var arrayFotoModel = [FotoModel]()
+	var arrayFotoModel = [URLModel]()
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -30,9 +30,9 @@ class CollectionViewController: UIViewController {
 	}
 	
 	func allPhoto() {
-		DispatchQueue.main.async {
 			NetworkService().getRequest(searchTerms: Constants().allPhoto) { [weak self] (photos) in
-				self?.arrayFotoModel = photos
+				DispatchQueue.main.async {
+				self?.arrayFotoModel = photos.results
 				self?.photoCollectionView.reloadData()
 			}
 		}
@@ -63,14 +63,15 @@ extension CollectionViewController: UICollectionViewDataSource {
 extension CollectionViewController: UICollectionViewDelegate {
 	
 	func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath){
+		
 		let fullPhotoView = storyboard?.instantiateViewController(withIdentifier: Constants().idDidSelect) as! FullPhotoView
 		navigationController?.pushViewController(fullPhotoView, animated: true)
 		collectionView.deselectItem(at: indexPath, animated: true)
-
+		
 		DispatchQueue.main.async {
 			fullPhotoView.setupFullImage(model: self.arrayFotoModel[indexPath.item])
-			fullPhotoView.reloadInputViews()
 		}
+		fullPhotoView.reloadInputViews()
 	}
 }
 
