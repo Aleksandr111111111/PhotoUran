@@ -67,57 +67,72 @@ extension SearchPhotoTableViewController{
 
 //MARK:  UISearchBarDelegate
 extension SearchPhotoTableViewController: UISearchBarDelegate {
-	
 	func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-			guard let text = searchBar.searchTextField.text, text.count > Constants().countSimbols else { return }
-		DispatchQueue.main.async {
-			NetworkService().getRequest(searchTerms: searchText) { [weak self] (photos) in
-				self?.arrayTableFoto =  photos.results
-				self?.tableView.reloadData()
+		guard let text = searchBar.searchTextField.text, text.count > Constants().countSimbols else { return }
+// MARK: Alamofire
+		//			NetworkService().getRequest(searchTerms: searchText) { [weak self] (photos) in
+		//		DispatchQueue.main.async {
+		//				self?.arrayTableFoto = photos
+		//				self?.tableView.reloadData()
+		//			}
+		//		}
+		
+// MARK: Moya
+		NetworkService().getSearchPhoto(searchTerms: searchText) { [weak self] (photos) in
+			guard let self = self else { return }
+			DispatchQueue.main.async {
+				switch photos {
+				case .success(let photo):
+					guard let foto = photo else { return }
+					self.arrayTableFoto = foto
+					self.tableView.reloadData()
+				case .failure(let error):
+					print(error)
+				}
 			}
 		}
 	}
 }
 
 /*
-override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-
-}
-*/
+ override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+ 
+ }
+ */
 /*
-// Override to support conditional editing of the table view.
-override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-// Return false if you do not want the specified item to be editable.
-return true
-}
-*/
+ // Override to support conditional editing of the table view.
+ override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+ // Return false if you do not want the specified item to be editable.
+ return true
+ }
+ */
 
 // Override to support editing the table view.
 
 /*
-// Override to support rearranging the table view.
-override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-// Return false if you do not want the item to be re-orderable.
-return true
-}
-*/
+ // Override to support rearranging the table view.
+ override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
+ 
+ }
+ */
 
 /*
-// MARK: - Navigation
+ // Override to support conditional rearranging of the table view.
+ override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+ // Return false if you do not want the item to be re-orderable.
+ return true
+ }
+ */
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-// Get the new view controller using segue.destination.
-// Pass the selected object to the new view controller.
-}
-*/
+/*
+ // MARK: - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+ // Get the new view controller using segue.destination.
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 
 

@@ -18,6 +18,10 @@
 		C726A52526EA04410062D42A /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C726A52426EA04410062D42A /* NetworkService.swift */; };
 		C726A52926EA04950062D42A /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = C726A52826EA04950062D42A /* Model.swift */; };
 		C726A52B26EA06410062D42A /* PhotoCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C726A52A26EA06410062D42A /* PhotoCollectionCell.swift */; };
+		C7775A3227216646003AF1C2 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7775A3127216646003AF1C2 /* Network.swift */; };
+		C7775A342721666E003AF1C2 /* NetworkServise.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7775A332721666E003AF1C2 /* NetworkServise.swift */; };
+		C7775A37272166F4003AF1C2 /* Moya.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7775A36272166F4003AF1C2 /* Moya.swift */; };
+		C7775A392721670A003AF1C2 /* NetworkMoya.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7775A382721670A003AF1C2 /* NetworkMoya.swift */; };
 		C79BE74526FD9CEB0054257C /* SearchPhotoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79BE74426FD9CEB0054257C /* SearchPhotoTableViewController.swift */; };
 		C79BE74926FF55560054257C /* SearchPhotoViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79BE74826FF55560054257C /* SearchPhotoViewCell.swift */; };
 		FF06F7AD4BF616FBBF2C3B78 /* Pods_PhotoUran.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BAF31DE9BDFFA59088DF88B /* Pods_PhotoUran.framework */; };
@@ -39,6 +43,10 @@
 		C726A52426EA04410062D42A /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		C726A52826EA04950062D42A /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		C726A52A26EA06410062D42A /* PhotoCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionCell.swift; sourceTree = "<group>"; };
+		C7775A3127216646003AF1C2 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		C7775A332721666E003AF1C2 /* NetworkServise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServise.swift; sourceTree = "<group>"; };
+		C7775A36272166F4003AF1C2 /* Moya.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Moya.swift; sourceTree = "<group>"; };
+		C7775A382721670A003AF1C2 /* NetworkMoya.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMoya.swift; sourceTree = "<group>"; };
 		C79BE74426FD9CEB0054257C /* SearchPhotoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPhotoTableViewController.swift; sourceTree = "<group>"; };
 		C79BE74826FF55560054257C /* SearchPhotoViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPhotoViewCell.swift; sourceTree = "<group>"; };
 		D2D08244A28F053101FADA73 /* Pods-PhotoUran.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoUran.release.xcconfig"; path = "Target Support Files/Pods-PhotoUran/Pods-PhotoUran.release.xcconfig"; sourceTree = "<group>"; };
@@ -139,9 +147,38 @@
 		C726A52326EA041E0062D42A /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				C726A52426EA04410062D42A /* NetworkService.swift */,
+				C7775A30272165FC003AF1C2 /* SettingsNative */,
+				C7775A2F272165D9003AF1C2 /* SettingsAlamofire */,
+				C7775A352721667B003AF1C2 /* SettingsMoya */,
 			);
 			path = Settings;
+			sourceTree = "<group>";
+		};
+		C7775A2F272165D9003AF1C2 /* SettingsAlamofire */ = {
+			isa = PBXGroup;
+			children = (
+				C726A52426EA04410062D42A /* NetworkService.swift */,
+			);
+			path = SettingsAlamofire;
+			sourceTree = "<group>";
+		};
+		C7775A30272165FC003AF1C2 /* SettingsNative */ = {
+			isa = PBXGroup;
+			children = (
+				C7775A3127216646003AF1C2 /* Network.swift */,
+				C7775A332721666E003AF1C2 /* NetworkServise.swift */,
+			);
+			name = SettingsNative;
+			path = SettingsAlamofire;
+			sourceTree = "<group>";
+		};
+		C7775A352721667B003AF1C2 /* SettingsMoya */ = {
+			isa = PBXGroup;
+			children = (
+				C7775A36272166F4003AF1C2 /* Moya.swift */,
+				C7775A382721670A003AF1C2 /* NetworkMoya.swift */,
+			);
+			path = SettingsMoya;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,11 +296,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C7775A3227216646003AF1C2 /* Network.swift in Sources */,
 				C726A52926EA04950062D42A /* Model.swift in Sources */,
+				C7775A342721666E003AF1C2 /* NetworkServise.swift in Sources */,
 				C726A52526EA04410062D42A /* NetworkService.swift in Sources */,
 				C726A50F26E9FF990062D42A /* CollectionViewController.swift in Sources */,
+				C7775A392721670A003AF1C2 /* NetworkMoya.swift in Sources */,
 				C726A52B26EA06410062D42A /* PhotoCollectionCell.swift in Sources */,
 				C726A50B26E9FF990062D42A /* AppDelegate.swift in Sources */,
+				C7775A37272166F4003AF1C2 /* Moya.swift in Sources */,
 				C703FED526EF95D8003F5F98 /* FullPhotoView.swift in Sources */,
 				C79BE74526FD9CEB0054257C /* SearchPhotoTableViewController.swift in Sources */,
 				C726A50D26E9FF990062D42A /* SceneDelegate.swift in Sources */,

@@ -25,15 +25,33 @@ class CollectionViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		allPhoto()
+		getAllPhoto()
 		setapCollectionView()
 	}
 	
-	func allPhoto() {
-			NetworkService().getRequest(searchTerms: Constants().allPhoto) { [weak self] (photos) in
-				DispatchQueue.main.async {
-				self?.arrayFotoModel = photos.results
-				self?.photoCollectionView.reloadData()
+	//MARK: Alamofire
+	//	func getAllPhoto() {
+	//			NetworkService().getRequest(searchTerms: Constants().allPhoto) { [weak self] (photos) in
+	//				DispatchQueue.main.async {
+	//				self?.arrayFotoModel = photos.results
+	//				self?.photoCollectionView.reloadData()
+	//			}
+	//		}
+	//	}
+	
+	//MARK: Moya
+	func getAllPhoto() {
+		NetworkService().getAllPhoto { [weak self] (photos) in
+			guard let self = self else { return }
+			DispatchQueue.main.async {
+				switch photos {
+				case .success(let photo):
+					guard let foto = photo else { return }
+					self.arrayFotoModel = foto
+					self.photoCollectionView.reloadData()
+				case .failure(let error):
+					print(error)
+				}
 			}
 		}
 	}
